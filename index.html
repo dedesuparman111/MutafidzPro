@@ -878,7 +878,7 @@
     // ============================================================
     // TOM SELECT
     // ============================================================
-    function initTomSelect(id, html, onChangeCallback) {
+     function initTomSelect(id, html, onChangeCallback) {
       const el = document.getElementById(id);
       if (!el) return;
       if (tsInstances[id]) { tsInstances[id].destroy(); delete tsInstances[id]; }
@@ -887,10 +887,10 @@
         create: false,
         searchField: ['text', 'value'],
         placeholder: 'Ketik untuk mencari...',
+        maxOptions: 200,
         onChange: function(val) { if (onChangeCallback) onChangeCallback(val); }
       });
     }
-
     // ============================================================
     // DASHBOARD
     // ============================================================
