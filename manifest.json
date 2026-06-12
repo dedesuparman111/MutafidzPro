@@ -36,22 +36,6 @@
       "purpose": "maskable"
     }
   ],
-  "screenshots": [
-    {
-      "src": "screenshots/screenshot-mobile.png",
-      "sizes": "390x844",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Dashboard Mutafidz PRO di perangkat mobile"
-    },
-    {
-      "src": "screenshots/screenshot-desktop.png",
-      "sizes": "1280x800",
-      "type": "image/png",
-      "form_factor": "wide",
-      "label": "Dashboard Mutafidz PRO di desktop"
-    }
-  ],
   "related_applications": [],
   "prefer_related_applications": false
 }
