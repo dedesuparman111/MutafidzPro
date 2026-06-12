@@ -284,9 +284,8 @@
       </div>
       <div class="sidebar-nav">
         <div class="side-item active" onclick="nav('dashboard')"    id="side-dashboard">   <i class="fas fa-home"></i>      <span class="side-text">Dashboard</span></div>
-        <div class="side-item"        onclick="nav('memorization')" id="side-memorization"><i class="fas fa-book-open"></i>  <span class="side-text">Setoran</span></div>
+        <div class="side-item"        onclick="nav('memorization')" id="side-memorization"><i class="fas fa-book-open"></i>  <span class="side-text">Hafalan</span></div>
         <div class="side-item"        onclick="nav('students')"     id="side-students">    <i class="fas fa-users"></i>     <span class="side-text">Santri</span></div>
-        <div class="side-item"        onclick="nav('history')"      id="side-history">     <i class="fas fa-history"></i>   <span class="side-text">Riwayat</span></div>
         <div class="side-item"        onclick="nav('murojaah')"     id="side-murojaah">    <i class="fas fa-sync"></i>      <span class="side-text">Murojaah</span></div>
         <div class="side-item"        onclick="nav('quran')"        id="side-quran">       <i class="fas fa-book-quran"></i><span class="side-text">Qur'an</span></div>
         <div class="side-item"        onclick="nav('settings')"     id="side-settings">    <i class="fas fa-cog"></i>       <span class="side-text">Pengaturan</span></div>
@@ -351,31 +350,14 @@
         <!-- MEMORIZATION                                             -->
         <!-- ======================================================= -->
         <section id="view-memorization" class="view-section">
-          <h4 class="mb-3"><i class="fas fa-book-open text-primary"></i> Setoran Hafalan</h4>
-          <div class="m-card">
-            <form id="mem-form">
-              <input type="hidden" id="mem-id">
-              <div class="mb-3"><label>Tanggal</label><input type="date" id="mem-date" class="form-control" required></div>
-              <div class="mb-3">
-                <label>Santri</label>
-                <select id="mem-student" required placeholder="Cari santri..."><option value="">Pilih Santri...</option></select>
-              </div>
-              <div class="mb-3">
-                <label>Surah</label>
-                <div class="d-flex gap-2 align-items-start">
-                  <div class="flex-grow-1"><select id="mem-surah" required placeholder="Cari surah..."><option value="">Pilih Surah...</option></select></div>
-                  <button type="button" class="btn btn-secondary" style="height: 38px;" onclick="openQuranFromModule('mem-surah')" title="Buka Quran"><i class="fas fa-quran"></i></button>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-4 mb-3"><label>Total Ayat</label><input type="number" id="mem-verses" class="form-control" readonly required></div>
-                <div class="col-4 mb-3"><label>Salah</label><input type="number" id="mem-mistakes" class="form-control" value="0" min="0" oninput="calcScore()" required></div>
-                <div class="col-4 mb-3"><label>Nilai</label><input type="text" id="mem-score" class="form-control fw-bold text-success" readonly></div>
-              </div>
-              <div class="mb-3"><label>Catatan</label><input type="text" id="mem-notes" class="form-control"></div>
-              <button type="submit" class="btn btn-primary w-100"><i class="fas fa-save"></i> Simpan Setoran</button>
-            </form>
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="m-0"><i class="fas fa-book-open text-primary"></i> Hafalan</h4>
+            <button class="btn btn-sm btn-primary" onclick="showMemorizationForm()"><i class="fas fa-plus"></i> Tambah</button>
           </div>
+          <div class="mb-3">
+            <input type="text" id="search-history" class="form-control" placeholder="Cari santri atau surah..." oninput="renderHistory()">
+          </div>
+          <div id="history-list"></div>
         </section>
 
         <!-- ======================================================= -->
@@ -402,16 +384,7 @@
           <div id="student-list"></div>
         </section>
 
-        <!-- ======================================================= -->
-        <!-- HISTORY                                                  -->
-        <!-- ======================================================= -->
-        <section id="view-history" class="view-section">
-          <h4 class="mb-3"><i class="fas fa-history text-primary"></i> Riwayat Hafalan</h4>
-          <div class="mb-3">
-            <input type="text" id="search-history" class="form-control" placeholder="Cari santri atau surah..." oninput="renderHistory()">
-          </div>
-          <div id="history-list"></div>
-        </section>
+
 
         <!-- ======================================================= -->
         <!-- MUROJAAH                                                 -->
@@ -560,7 +533,7 @@
       <!-- Bottom Nav -->
       <nav class="bottom-nav">
         <div class="nav-item active" onclick="nav('dashboard')"    id="nav-dashboard">   <i class="fas fa-home"></i>      <span>Home</span></div>
-        <div class="nav-item"        onclick="nav('memorization')" id="nav-memorization"><i class="fas fa-book-open"></i>  <span>Setoran</span></div>
+        <div class="nav-item"        onclick="nav('memorization')" id="nav-memorization"><i class="fas fa-book-open"></i>  <span>Hafalan</span></div>
         <div class="nav-item"        onclick="nav('students')"     id="nav-students">    <i class="fas fa-users"></i>     <span>Santri</span></div>
         <div class="nav-item"        onclick="nav('murojaah')"     id="nav-murojaah">    <i class="fas fa-sync"></i>      <span>Murojaah</span></div>
         <div class="nav-item"        onclick="nav('quran')"        id="nav-quran">       <i class="fas fa-book-quran"></i><span>Qur'an</span></div>
@@ -651,6 +624,44 @@
           </div>
           <div class="modal-footer">
             <button type="submit" class="btn btn-primary w-100">Simpan</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Memorization Modal -->
+  <div class="modal fade" id="memorizationModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <form id="mem-form">
+          <div class="modal-header">
+            <h5 class="modal-title" id="mem-modal-title">Setoran Hafalan</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <input type="hidden" id="mem-id">
+            <div class="mb-3"><label>Tanggal</label><input type="date" id="mem-date" class="form-control" required></div>
+            <div class="mb-3">
+              <label>Santri</label>
+              <select id="mem-student" required placeholder="Cari santri..."><option value="">Pilih Santri...</option></select>
+            </div>
+            <div class="mb-3">
+              <label>Surah</label>
+              <div class="d-flex gap-2 align-items-start">
+                <div class="flex-grow-1"><select id="mem-surah" required placeholder="Cari surah..."><option value="">Pilih Surah...</option></select></div>
+                <button type="button" class="btn btn-secondary" style="height: 38px;" onclick="openQuranFromModule('mem-surah', 'memorizationModal')" title="Buka Quran"><i class="fas fa-quran"></i></button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-4 mb-3"><label>Total Ayat</label><input type="number" id="mem-verses" class="form-control" readonly required></div>
+              <div class="col-4 mb-3"><label>Salah</label><input type="number" id="mem-mistakes" class="form-control" value="0" min="0" oninput="calcScore()" required></div>
+              <div class="col-4 mb-3"><label>Nilai</label><input type="text" id="mem-score" class="form-control fw-bold text-success" readonly></div>
+            </div>
+            <div class="mb-3"><label>Catatan</label><input type="text" id="mem-notes" class="form-control"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary w-100"><i class="fas fa-save"></i> Simpan Setoran</button>
           </div>
         </form>
       </div>
@@ -830,7 +841,7 @@
 
       if (view === 'dashboard')    loadDashboard();
       if (view === 'students')     loadStudents();
-      if (view === 'history')      loadHistory();
+      if (view === 'memorization') loadHistory();
       if (view === 'murojaah')     loadMurojaah();
       if (view === 'settings')     updateStatusUI();
     }
@@ -1120,6 +1131,18 @@
       setVal('mem-score', score.toFixed(2));
     }
 
+    function showMemorizationForm() {
+      document.getElementById('mem-form').reset();
+      if (tsInstances['mem-student']) tsInstances['mem-student'].clear();
+      if (tsInstances['mem-surah'])   tsInstances['mem-surah'].clear();
+      setVal('mem-id',   '');
+      setVal('mem-date', getToday());
+      setVal('mem-score', '');
+      setVal('mem-mistakes', '0');
+      setVal('mem-verses', '');
+      new bootstrap.Modal(document.getElementById('memorizationModal')).show();
+    }
+
     document.getElementById('mem-form').onsubmit = async (e) => {
       e.preventDefault();
       showLoading('Menyimpan setoran...');
@@ -1150,11 +1173,8 @@
       hideLoading();
       if (res && res.success) {
         toast('Setoran berhasil disimpan');
-        document.getElementById('mem-form').reset();
-        if (tsInstances['mem-student']) tsInstances['mem-student'].clear();
-        if (tsInstances['mem-surah'])   tsInstances['mem-surah'].clear();
-        document.getElementById('mem-date').value = getToday();
-        nav('history');
+        bootstrap.Modal.getInstance(document.getElementById('memorizationModal')).hide();
+        loadHistory();
       } else {
         toast('Gagal menyimpan: ' + (res.message || 'Coba lagi'), 'error');
       }
