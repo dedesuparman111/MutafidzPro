@@ -269,31 +269,6 @@
       .desktop-sidebar { display: none !important; }
     }
 
-    /* Dashboard Custom Styles */
-    .welcome-banner {
-      box-shadow: 0 8px 20px rgba(25, 135, 84, 0.12);
-    }
-    .stat-card-new {
-      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-      border: none !important;
-    }
-    .stat-card-new:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 22px rgba(0,0,0,0.12);
-    }
-    .stat-card-new .stat-icon-wrapper {
-      transition: transform 0.3s ease;
-    }
-    .stat-card-new:hover .stat-icon-wrapper {
-      transform: scale(1.15) rotate(5deg);
-    }
-    body.dark-mode .stat-card-new {
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    }
-    body.dark-mode .stat-card-new:hover {
-      box-shadow: 0 8px 25px rgba(0,0,0,0.35);
-    }
-
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
   </style>
 </head>
@@ -343,136 +318,32 @@
         <!-- DASHBOARD                                                -->
         <!-- ======================================================= -->
         <section id="view-dashboard" class="view-section active">
-          
-          <!-- Welcome Banner -->
-          <div class="m-card welcome-banner text-white mb-3 position-relative overflow-hidden" style="background: linear-gradient(135deg, var(--primary) 0%, rgba(25, 135, 84, 0.8) 100%); border: none; border-radius: 16px; padding: 1.5rem;">
-            <div class="position-relative" style="z-index: 2;">
-              <h4 class="mb-1 text-white font-weight-bold">Assalamualaikum, Ustadz! 👋</h4>
-              <p class="mb-0 opacity-90" style="font-size: 0.9rem;">Semoga hari ini penuh berkah bersama Al-Qur'an. Berikut ringkasan aktivitas halaqah Anda hari ini.</p>
-            </div>
-            <!-- Background mosque/quran vector icon watermark -->
-            <div class="position-absolute" style="right: -20px; bottom: -20px; font-size: 8rem; opacity: 0.15; color: white; transform: rotate(-15deg); pointer-events: none; z-index: 1;">
-              <i class="fas fa-quran"></i>
-            </div>
-          </div>
-
-          <!-- Re-designed Stats Cards -->
           <div class="row g-2 mb-3">
-            <div class="col-6 col-md-3">
-              <div class="m-card stat-card-new d-flex align-items-center justify-content-between p-3 position-relative overflow-hidden" style="background: linear-gradient(135deg, #0d6efd 0%, #00c6ff 100%); border: none; color: white; border-radius: 16px; transition: transform 0.3s, box-shadow 0.3s; height: 100%;">
-                <div>
-                  <div class="stat-value font-weight-bold" id="ds-students" style="font-size: 2.2rem; line-height: 1;">0</div>
-                  <small class="opacity-90" style="font-size: 0.8rem;">Santri Aktif</small>
-                </div>
-                <div class="stat-icon-wrapper" style="font-size: 2.2rem; opacity: 0.3; color: white;">
-                  <i class="fas fa-users"></i>
-                </div>
-              </div>
-            </div>
-            <div class="col-6 col-md-3">
-              <div class="m-card stat-card-new d-flex align-items-center justify-content-between p-3 position-relative overflow-hidden" style="background: linear-gradient(135deg, #198754 0%, #20c997 100%); border: none; color: white; border-radius: 16px; transition: transform 0.3s, box-shadow 0.3s; height: 100%;">
-                <div>
-                  <div class="stat-value font-weight-bold" id="ds-memorization" style="font-size: 2.2rem; line-height: 1;">0</div>
-                  <small class="opacity-90" style="font-size: 0.8rem;">Total Setoran</small>
-                </div>
-                <div class="stat-icon-wrapper" style="font-size: 2.2rem; opacity: 0.3; color: white;">
-                  <i class="fas fa-book-open"></i>
-                </div>
-              </div>
-            </div>
-            <div class="col-6 col-md-3">
-              <div class="m-card stat-card-new d-flex align-items-center justify-content-between p-3 position-relative overflow-hidden" style="background: linear-gradient(135deg, #fd7e14 0%, #ffb703 100%); border: none; color: white; border-radius: 16px; transition: transform 0.3s, box-shadow 0.3s; height: 100%;">
-                <div>
-                  <div class="stat-value font-weight-bold" id="ds-murojaah" style="font-size: 2.2rem; line-height: 1;">0</div>
-                  <small class="opacity-90" style="font-size: 0.8rem;">Total Murojaah</small>
-                </div>
-                <div class="stat-icon-wrapper" style="font-size: 2.2rem; opacity: 0.3; color: white;">
-                  <i class="fas fa-sync-alt"></i>
-                </div>
-              </div>
-            </div>
-            <div class="col-6 col-md-3">
-              <div class="m-card stat-card-new d-flex align-items-center justify-content-between p-3 position-relative overflow-hidden" style="background: linear-gradient(135deg, #6f42c1 0%, #b5179e 100%); border: none; color: white; border-radius: 16px; transition: transform 0.3s, box-shadow 0.3s; height: 100%;">
-                <div>
-                  <div class="stat-value font-weight-bold" id="ds-mur-month" style="font-size: 2.2rem; line-height: 1;">0</div>
-                  <small class="opacity-90" style="font-size: 0.8rem;">Murojaah Bulan Ini</small>
-                </div>
-                <div class="stat-icon-wrapper" style="font-size: 2.2rem; opacity: 0.3; color: white;">
-                  <i class="fas fa-calendar-check"></i>
-                </div>
-              </div>
-            </div>
+            <div class="col-6"><div class="m-card stat-card"><div class="stat-value" id="ds-students">0</div><small>Students</small></div></div>
+            <div class="col-6"><div class="m-card stat-card"><div class="stat-value" id="ds-memorization">0</div><small>Memorizations</small></div></div>
+            <div class="col-6"><div class="m-card stat-card"><div class="stat-value" id="ds-murojaah">0</div><small>Total Murojaah</small></div></div>
+            <div class="col-6"><div class="m-card stat-card"><div class="stat-value" id="ds-mur-month">0</div><small>Murojaah Bulan Ini</small></div></div>
           </div>
 
-          <!-- Quick Action Panel -->
-          <div class="m-card mb-3" style="border-radius: 16px; border: 1px solid var(--border-color); background-color: var(--bg-card);">
-            <h6 class="mb-3 font-weight-bold"><i class="fas fa-bolt text-warning me-1"></i> Akses Cepat</h6>
-            <div class="row g-2">
-              <div class="col-6 col-sm-3">
-                <button class="btn btn-outline-primary w-100 d-flex flex-column align-items-center gap-1 py-3" onclick="showMemorizationForm()" style="border-radius: 12px; font-size: 0.85rem; font-weight: 600;">
-                  <i class="fas fa-book-open fa-lg"></i>
-                  + Setoran Baru
-                </button>
+          <div class="m-card p-0 overflow-hidden" style="border: 1px solid var(--border-color);">
+            <div class="p-3 d-flex justify-content-between align-items-center" style="background-color: var(--primary); color: white;">
+              <h5 class="m-0 text-white"><i class="fas fa-calendar-alt"></i> Kalender</h5>
+              <div class="d-flex align-items-center gap-2">
+                <button class="btn btn-sm border-0 text-white" style="background: rgba(255,255,255,0.2);" onclick="changeMonth(-1)"><i class="fas fa-chevron-left"></i></button>
+                <span id="calendar-month-year" class="fw-semibold" style="min-width: 110px; text-align: center;">Bulan Tahun</span>
+                <button class="btn btn-sm border-0 text-white" style="background: rgba(255,255,255,0.2);" onclick="changeMonth(1)"><i class="fas fa-chevron-right"></i></button>
               </div>
-              <div class="col-6 col-sm-3">
-                <button class="btn btn-outline-success w-100 d-flex flex-column align-items-center gap-1 py-3" onclick="showMurojaahForm()" style="border-radius: 12px; font-size: 0.85rem; font-weight: 600;">
-                  <i class="fas fa-sync fa-lg"></i>
-                  + Murojaah Baru
-                </button>
+            </div>
+            <div class="p-3" style="background-color: var(--bg-card);">
+              <div class="calendar-grid text-center mb-2">
+                <div class="fw-bold text-muted small">Min</div><div class="fw-bold text-muted small">Sen</div>
+                <div class="fw-bold text-muted small">Sel</div><div class="fw-bold text-muted small">Rab</div>
+                <div class="fw-bold text-muted small">Kam</div><div class="fw-bold text-muted small">Jum</div>
+                <div class="fw-bold text-muted small">Sab</div>
               </div>
-              <div class="col-6 col-sm-3">
-                <button class="btn btn-outline-info w-100 d-flex flex-column align-items-center gap-1 py-3" onclick="showStudentForm()" style="border-radius: 12px; font-size: 0.85rem; font-weight: 600;">
-                  <i class="fas fa-user-plus fa-lg"></i>
-                  + Tambah Santri
-                </button>
-              </div>
-              <div class="col-6 col-sm-3">
-                <button class="btn btn-outline-secondary w-100 d-flex flex-column align-items-center gap-1 py-3" onclick="nav('quran')" style="border-radius: 12px; font-size: 0.85rem; font-weight: 600;">
-                  <i class="fas fa-book-quran fa-lg"></i>
-                  Buka Al-Qur'an
-                </button>
-              </div>
+              <div id="calendar-days" class="calendar-grid text-center"></div>
             </div>
           </div>
-
-          <div class="row g-3">
-            <!-- Calendar Card -->
-            <div class="col-12 col-md-7">
-              <div class="m-card p-0 overflow-hidden" style="border: 1px solid var(--border-color); border-radius: 16px; background-color: var(--bg-card);">
-                <div class="p-3 d-flex justify-content-between align-items-center" style="background: linear-gradient(135deg, var(--primary) 0%, rgba(25, 135, 84, 0.9) 100%); color: white;">
-                  <h5 class="m-0 text-white font-weight-bold" style="font-size: 1rem;"><i class="fas fa-calendar-alt me-1"></i> Kalender Halaqah</h5>
-                  <div class="d-flex align-items-center gap-2">
-                    <button class="btn btn-sm border-0 text-white" style="background: rgba(255,255,255,0.2); border-radius: 8px;" onclick="changeMonth(-1)"><i class="fas fa-chevron-left"></i></button>
-                    <span id="calendar-month-year" class="fw-semibold" style="min-width: 110px; text-align: center; font-size: 0.9rem;">Bulan Tahun</span>
-                    <button class="btn btn-sm border-0 text-white" style="background: rgba(255,255,255,0.2); border-radius: 8px;" onclick="changeMonth(1)"><i class="fas fa-chevron-right"></i></button>
-                  </div>
-                </div>
-                <div class="p-3">
-                  <div class="calendar-grid text-center mb-2">
-                    <div class="fw-bold text-muted small">Min</div><div class="fw-bold text-muted small">Sen</div>
-                    <div class="fw-bold text-muted small">Sel</div><div class="fw-bold text-muted small">Rab</div>
-                    <div class="fw-bold text-muted small">Kam</div><div class="fw-bold text-muted small">Jum</div>
-                    <div class="fw-bold text-muted small">Sab</div>
-                  </div>
-                  <div id="calendar-days" class="calendar-grid text-center"></div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Recent Activities Card -->
-            <div class="col-12 col-md-5">
-              <div class="m-card" style="border-radius: 16px; border: 1px solid var(--border-color); background-color: var(--bg-card); height: 100%;">
-                <h5 class="mb-3 font-weight-bold" style="font-size: 1.1rem;"><i class="fas fa-history text-primary me-1"></i> Aktivitas Terbaru</h5>
-                <div id="recent-activities">
-                  <div class="text-center p-4">
-                    <div class="spinner-border text-primary spinner-border-sm"></div>
-                    <p class="text-muted mt-2 small">Memuat aktivitas terbaru...</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
         </section>
 
         <!-- ======================================================= -->
@@ -1044,48 +915,6 @@
         document.getElementById('ds-mur-month').innerText   = res.data.murojaahThisMonth  || 0;
       }
 
-      // Fetch recent activities & calendar markers
-      try {
-        const memsRes = await GAS.run('getMemorizations');
-        const mursRes = await GAS.run('getMurojaahs');
-        
-        if (memsRes && memsRes.success && Array.isArray(memsRes.data)) {
-          state.mems = memsRes.data;
-        }
-        if (mursRes && mursRes.success && Array.isArray(mursRes.data)) {
-          state.murs = mursRes.data;
-        }
-
-        // Render recent activities
-        let activities = [];
-        (state.mems || []).forEach(m => {
-          activities.push({
-            type: 'setoran',
-            studentName: m.Student_Name,
-            detail: m.Surah,
-            date: m.Date,
-            score: m.Score,
-            mistakes: m.Mistakes
-          });
-        });
-        (state.murs || []).forEach(m => {
-          activities.push({
-            type: 'murojaah',
-            studentName: m.Student_Name,
-            detail: m.Surah,
-            date: m.Date,
-            notes: m.Notes
-          });
-        });
-        activities.sort((a, b) => new Date(b.date) - new Date(a.date));
-        renderRecentActivities(activities.slice(0, 5));
-
-        // Re-render calendar with markers
-        renderModernCalendar();
-      } catch (e) {
-        console.error('Error loading dashboard extra data', e);
-      }
-
       // ✅ FIX: Fetch students untuk dropdown HANYA jika belum pernah di-fetch
       // Ini mencegah race condition yang overwrite state.students jadi []
       if (!state.studentsFetched) {
@@ -1105,41 +934,6 @@
       });
       initTomSelect('mem-student', opts);
       initTomSelect('mur-student', opts);
-    }
-
-    function renderRecentActivities(list) {
-      const el = document.getElementById('recent-activities');
-      if (!el) return;
-      if (!list || list.length === 0) {
-        el.innerHTML = '<div class="text-center p-3 text-muted small">Belum ada aktivitas terbaru</div>';
-        return;
-      }
-      let html = '';
-      list.forEach(act => {
-        const dateStr = new Date(act.date).toLocaleDateString('id-ID', {day: 'numeric', month: 'short', year: 'numeric'});
-        const icon = act.type === 'setoran' ? 'fa-book-open text-success' : 'fa-sync text-info';
-        const typeLabel = act.type === 'setoran' ? 'Setoran' : 'Murojaah';
-        const detailInfo = act.type === 'setoran' ? `Nilai: <strong>${act.score}</strong> (Salah: ${act.mistakes})` : (act.notes ? `Catatan: ${act.notes}` : '');
-        html += `
-          <div class="d-flex align-items-start gap-3 p-2 mb-2 border-bottom border-light">
-            <div class="rounded-circle bg-light d-flex justify-content-center align-items-center" style="width: 36px; height: 36px; flex-shrink: 0; background-color: var(--bg-body) !important;">
-              <i class="fas ${icon}"></i>
-            </div>
-            <div class="flex-grow-1 min-w-0">
-              <div class="d-flex justify-content-between align-items-center mb-1">
-                <h6 class="mb-0 text-truncate font-weight-bold" style="font-size: 0.9rem; color: var(--text-main);">${escHtml(act.studentName || '')}</h6>
-                <span class="text-muted small" style="font-size: 0.75rem;">${dateStr}</span>
-              </div>
-              <p class="mb-0 text-muted text-truncate" style="font-size: 0.85rem;">
-                <span class="badge ${act.type === 'setoran' ? 'bg-success' : 'bg-info'} me-1" style="font-size: 0.7rem; color: white;">${typeLabel}</span>
-                ${escHtml(act.detail || '')}
-              </p>
-              ${detailInfo ? `<small class="text-muted d-block mt-1" style="font-size: 0.75rem;">${detailInfo}</small>` : ''}
-            </div>
-          </div>
-        `;
-      });
-      el.innerHTML = html;
     }
 
     // ============================================================
@@ -1765,32 +1559,7 @@
       }
       for (let i = 1; i <= daysInMonth; i++) {
         const cls = (isCurrentMonth && i === now.getDate()) ? 'cal-day today' : 'cal-day';
-        
-        // Check if there are activities on this day
-        const hasSetoran = (state.mems || []).some(m => {
-          const mDate = new Date(m.Date);
-          return mDate.getDate() === i && mDate.getMonth() === month && mDate.getFullYear() === year;
-        });
-        const hasMurojaah = (state.murs || []).some(m => {
-          const mDate = new Date(m.Date);
-          return mDate.getDate() === i && mDate.getMonth() === month && mDate.getFullYear() === year;
-        });
-
-        let dotsHtml = '';
-        if (hasSetoran || hasMurojaah) {
-          dotsHtml = '<div class="cal-dots d-flex gap-1 justify-content-center" style="position:absolute; bottom:2px; left:0; right:0;">';
-          if (hasSetoran) dotsHtml += '<span style="width:4px; height:4px; border-radius:50%; background-color:var(--primary); display:inline-block;"></span>';
-          if (hasMurojaah) dotsHtml += '<span style="width:4px; height:4px; border-radius:50%; background-color:#0d6efd; display:inline-block;"></span>';
-          dotsHtml += '</div>';
-        }
-
-        html += `
-          <div class="cal-day-wrapper">
-            <div class="${cls}" style="position:relative;">
-              ${i}
-              ${dotsHtml}
-            </div>
-          </div>`;
+        html += `<div class="cal-day-wrapper"><div class="${cls}">${i}</div></div>`;
       }
       const remaining = 42 - firstDay - daysInMonth;
       for (let i = 1; i <= remaining; i++) {
